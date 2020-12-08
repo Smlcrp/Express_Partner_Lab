@@ -1,6 +1,6 @@
 # Lab - Delete/Update
 
-## Morning
+## First Step
 
 Come up with a CRUDable model (fruit, human, robot, etc)
 
@@ -11,9 +11,9 @@ Come up with a CRUDable model (fruit, human, robot, etc)
 1. Make index template contain a form which will make a DELETE request to the server.  Commit.
 1. Create a DELETE route that will remove the specified object from the array and redirect to the index page. Commit.
 
-## Afternoon
+## Second Step
 
-Expand the morning's app to have the following:
+Expand the above app to have the following:
 
 1. An edit route that shows an edit page (template) containing a form populated with the data from the server for one item. Commit.
 1. A link to the edit routes on the index page. Commit.
