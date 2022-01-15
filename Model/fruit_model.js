@@ -14,6 +14,9 @@ class Collection {
             return acc;
         }, {});
     }
+    find() {
+        return Object.values(this.#items);
+    }
 };
 class Fruit {
     constructor( data, id ) {
