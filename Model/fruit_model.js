@@ -7,7 +7,7 @@ class Collection {
         this.#currentId = 0;
         this.#items = this.#populateItems( startingData );
     }
-    
+
     #populateItems( startingData ) {
         return startingData.reduce(( acc, item, idx ) => {
             this.#currentId = idx;
@@ -18,6 +18,23 @@ class Collection {
 
     find() {
         return Object.values(this.#items);
+    }
+
+    findById( itemId, callBack ) {
+        if (!itemId) return console.log("missing id in first argument");
+    
+        if (typeof callBack !== "function") {
+            return console.log("missing function in second argument");
+        }
+    
+        let error;
+        const item = this.#items[itemId];
+    
+        if (!item) {
+            error = { message: `item with id "${itemId}" can't be found` };
+        }
+    
+        return callBack(error, item);
     }
 
     findByIdAndDelete( itemId, callBack ) {
