@@ -78,6 +78,11 @@
                                     <p>$<%= yumYum.price %></p>
                                 </div>
                             </div>
+                            <p class="control">
+                                <form action="/fruit/<%= yumYum.id %>?_method=DELETE" method="POST">
+                                    <input class="button is-danger" type="submit" value="Delete Product"/>                    
+                                </form>
+                              </p>
                         </article>
                     </div>
                 <% } %>

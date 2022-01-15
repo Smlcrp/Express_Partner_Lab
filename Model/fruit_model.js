@@ -7,6 +7,7 @@ class Collection {
         this.#currentId = 0;
         this.#items = this.#populateItems( startingData );
     }
+    
     #populateItems( startingData ) {
         return startingData.reduce(( acc, item, idx ) => {
             this.#currentId = idx;
@@ -14,8 +15,37 @@ class Collection {
             return acc;
         }, {});
     }
+
     find() {
         return Object.values(this.#items);
+    }
+
+    findByIdAndDelete( itemId, callBack ) {
+        let error = null;
+        const item = this.#items[itemId]
+        const isDeleted = delete this.#items[itemId];
+    
+        if ( !isDeleted ) {
+            error = { message: `item with id "${itemId}" can't be found` };
+        }
+    
+        return callBack(error, item);
+    }
+
+    findByIdAndUpdate( itemId, data, callBack ) {
+        let error = null;
+        const item = this.#items[itemId];
+    
+        if (!item) {
+            error = { message: `item can't be found` };
+        } else {
+            this.#items[itemId] = {
+                ...item,
+                ...data
+            }
+        }
+    
+        return callBack(error, this.#items[itemId]);
     }
 };
 class Fruit {
